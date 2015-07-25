@@ -1,0 +1,9 @@
+{
+  "env": {
+    "mocha": 1
+  },
+  "globals": {
+    "q": 1,
+    "expect": 1
+  }
+}

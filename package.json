@@ -1,0 +1,45 @@
+{
+  "name": "node-trustcommerce",
+  "version": "0.0.1",
+  "description": "TrustCommerce API Wrapper",
+  "main": "src/tclink.js",
+  "dependencies": {
+    "lodash": "^3.10.0",
+    "q": "^1.4.1",
+    "request": "^2.58.0"
+  },
+  "devDependencies": {
+    "chai": "< 3",
+    "chai-as-promised": "^5.1.0",
+    "eslint": "^0.24.1",
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-eslint": "^16.0.0",
+    "grunt-mocha-istanbul": "^2.4.0",
+    "istanbul": "^0.3.17",
+    "load-grunt-config": "^0.17.2",
+    "mocha": "*",
+    "proxyquire": "^1.6.0",
+    "sinon": "^1.15.4",
+    "sinon-chai": "^2.8.0"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run-script lint",
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha",
+    "posttest": "./node_modules/.bin/istanbul check-coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bookbottles/node-trustcommerce.git"
+  },
+  "author": "Anid Monsur <anid.monsur@bookbottles.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bookbottles/node-trustcommerce/issues"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "homepage": "https://github.com/bookbottles/node-trustcommerce"
+}
