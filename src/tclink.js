@@ -23,6 +23,15 @@ var availableActions = [
  * @constructor
  */
 var TCLink = function (custid, password) {
+
+    if (!_.isString(custid) || _.isEmpty(custid)) {
+        throw new Error('A valid customer id is required');
+    }
+
+    if (!_.isString(password) || _.isEmpty(password)) {
+        throw new Error('A valid password is required');
+    }
+
     this.custid = custid;
     this.password = password;
 };
