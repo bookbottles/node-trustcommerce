@@ -46,8 +46,8 @@ TCLink.prototype._makeRequest = function (action, params) {
         request.post({
             url: tclink.host,
             form: _.extend({
-                custid: this.custid,
-                password: this.password,
+                custid: tclink.custid,
+                password: tclink.password,
                 action: action,
                 demo: process.env.TCLINK_DEMO ? 'y' : 'n'
             }, params)
@@ -65,6 +65,9 @@ TCLink.prototype._makeRequest = function (action, params) {
                 if (_.has(responseData, 'status') && responseData.status === 'approved') {
                     resolve(responseData);
                 } else {
+                    if (_.has(responseData, 'offenders')) {
+                        responseData.offenders = responseData.offenders.split(',');
+                    }
                     reject(responseData);
                 }
 
@@ -83,29 +86,18 @@ TCLink.prototype._makeRequest = function (action, params) {
  * Make an API request to TrustCommerce
  * @param {string} action
  * @param {object} params
- * @param {function} [callback]
  * @returns {Q.Promise}
  */
-TCLink.prototype.send = function (action, params, callback) {
-    var tclink = this;
+TCLink.prototype.send = function (action, params) {
 
-    return Q.Promise(function (resolve, reject) {
-        if (!_.includes(availableActions, action)) {
-            return reject(action + ' is not a supported action.');
-        }
+    if (!_.includes(availableActions, action)) {
+        return Q.reject({
+            err: action + ' is not a supported action.'
+        });
+    }
 
-        var requestPromise = tclink._makeRequest(action, params);
+    return this._makeRequest(action, params);
 
-        if (_.isFunction(callback)) {
-            requestPromise.then(function (response) {
-                callback(null, response);
-            }, function (err) {
-                callback(err, null);
-            });
-        }
-
-        return requestPromise;
-    });
 };
 
 module.exports = TCLink;
