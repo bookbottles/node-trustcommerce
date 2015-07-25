@@ -133,6 +133,8 @@ describe('The TCLink wrapper', function () {
                         }, null)
                     }
                 });
+
+                delete process.env.TCLINK_DEMO;
             });
 
             it('should return the error gracefully', function (done) {
@@ -147,6 +149,10 @@ describe('The TCLink wrapper', function () {
                         body: undefined
                     });
                 }).done(done);
+            });
+
+            after(function () {
+                process.env.TCLINK_DEMO = 1;
             });
         });
     });
