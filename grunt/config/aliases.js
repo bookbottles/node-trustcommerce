@@ -1,13 +1,15 @@
+'use strict';
+
 module.exports = {
-    'default': [
+    default: [
         'watch'
     ],
-    'test': [
+    test: [
         'mocha_istanbul',
         'istanbul_check_coverage',
         'lint'
     ],
-    'lint': [
+    lint: [
         'eslint'
     ]
 };
