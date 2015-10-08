@@ -4,24 +4,24 @@
   "description": "TrustCommerce API Wrapper",
   "main": "src/tclink.js",
   "dependencies": {
-    "lodash": "^3.10.0",
+    "lodash": "^3.10.1",
     "q": "^1.4.1",
-    "request": "^2.58.0"
+    "request": "^2.64.0"
   },
   "devDependencies": {
     "chai": "< 3",
     "chai-as-promised": "^5.1.0",
     "codecov.io": "*",
-    "eslint": "^0.24.1",
+    "eslint": "^1.6.0",
     "grunt": "^0.4.5",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-eslint": "^16.0.0",
-    "grunt-mocha-istanbul": "^2.4.0",
-    "istanbul": "^0.3.17",
+    "grunt-eslint": "^17.2.0",
+    "grunt-mocha-istanbul": "^3.0.1",
+    "istanbul": "^0.3.22",
     "load-grunt-config": "^0.17.2",
     "mocha": "*",
-    "proxyquire": "^1.6.0",
-    "sinon": "^1.15.4",
+    "proxyquire": "^1.7.3",
+    "sinon": "^1.17.1",
     "sinon-chai": "^2.8.0"
   },
   "scripts": {
