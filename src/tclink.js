@@ -22,7 +22,7 @@ var availableActions = [
  * @param {string} password
  * @constructor
  */
-var TCLink = function (custid, password) {
+var TCLink = function(custid, password) {
 
     if (!_.isString(custid) || _.isEmpty(custid)) {
         throw new Error('A valid customer id is required');
@@ -38,10 +38,10 @@ var TCLink = function (custid, password) {
 
 TCLink.prototype.host = 'https://vault.trustcommerce.com/trans/';
 
-TCLink.prototype._makeRequest = function (action, params) {
+TCLink.prototype._makeRequest = function(action, params) {
     var tclink = this;
 
-    return Q.Promise(function (resolve, reject) {
+    return Q.Promise(function(resolve, reject) {
 
         request.post({
             url: tclink.host,
@@ -51,10 +51,13 @@ TCLink.prototype._makeRequest = function (action, params) {
                 action: action,
                 demo: process.env.TCLINK_DEMO ? 'y' : 'n'
             }, params)
-        }, function (err, httpResponse, body) {
+        }, function(err, httpResponse, body) {
+            var responseData;
+
             if (!err && httpResponse.statusCode === 200) {
-                var responseData = _.reduce(body.split('\n'), function (response, entry) {
+                responseData = _.reduce(body.split('\n'), function(response, entry) {
                     var data = entry.split('=');
+
                     if (data.length === 2) {
                         response[data[0]] = data[1];
                     }
@@ -88,7 +91,7 @@ TCLink.prototype._makeRequest = function (action, params) {
  * @param {object} params
  * @returns {Q.Promise}
  */
-TCLink.prototype.send = function (action, params) {
+TCLink.prototype.send = function(action, params) {
 
     if (!_.includes(availableActions, action)) {
         return Q.reject({

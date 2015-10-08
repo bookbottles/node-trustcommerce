@@ -7,7 +7,7 @@
 Summary
 =======
 A node.js library for communicating with the [TrustCommerce](http://www.trustcommerce.com/) payment gateway. This library
-uses [Q](https://github.com/kriskowal/q) to return promises. 
+returns promises.
 
 You can install via npm:
 
