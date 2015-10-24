@@ -65,7 +65,7 @@ TCLink.prototype._makeRequest = function(action, params) {
                     return response;
                 }, {});
 
-                if (_.has(responseData, 'status') && responseData.status === 'approved') {
+                if (_.has(responseData, 'status') && (responseData.status === 'approved' || responseData.status === 'accepted')) {
                     resolve(responseData);
                 } else {
                     if (_.has(responseData, 'offenders')) {
