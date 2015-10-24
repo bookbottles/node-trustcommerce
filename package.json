@@ -24,6 +24,9 @@
     "sinon": "^1.17.1",
     "sinon-chai": "^2.8.0"
   },
+  "files": [
+    "src/**/*"
+  ],
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run-script lint",
