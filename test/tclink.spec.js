@@ -44,7 +44,9 @@ describe('The TCLink wrapper', function() {
 
             return client.send('sale', {
                 amount: 1000
-            }).catch(function(error) {
+            }).then(function() {
+                throw new Error('Expected rejection');
+            }, function(error) {
                 error.should.have.property('status').that.equals('baddata');
                 error.should.have.property('error').that.equals('missingfields');
                 error.should.have.property('offenders').that.has.members(['cc', 'exp']);
@@ -58,7 +60,9 @@ describe('The TCLink wrapper', function() {
                 amount: 1000,
                 cc: '4012345678909',
                 exp: '0419'
-            }).catch(function(error) {
+            }).then(function() {
+                throw new Error('Expected rejection');
+            }, function(error) {
                 error.should.have.property('status').that.equals('decline');
                 error.should.have.property('declinetype').that.equals('decline');
                 error.should.have.property('transid').and.match(/^\d{3}-\d{10}$/);
@@ -72,7 +76,9 @@ describe('The TCLink wrapper', function() {
                 amount: 1000,
                 cc: '5555444433332226',
                 exp: '0419'
-            }).catch(function(error) {
+            }).then(function() {
+                throw new Error('Expected rejection');
+            }, function(error) {
                 error.should.have.property('status').that.equals('decline');
                 error.should.have.property('declinetype').that.equals('call');
                 error.should.have.property('transid').and.match(/^\d{3}-\d{10}$/);
@@ -86,7 +92,9 @@ describe('The TCLink wrapper', function() {
                 amount: 1000,
                 cc: '4444111144441111',
                 exp: '0419'
-            }).catch(function(error) {
+            }).then(function() {
+                throw new Error('Expected rejection');
+            }, function(error) {
                 error.should.have.property('status').that.equals('decline');
                 error.should.have.property('declinetype').that.equals('carderror');
                 error.should.have.property('transid').and.match(/^\d{3}-\d{10}$/);
@@ -101,7 +109,9 @@ describe('The TCLink wrapper', function() {
                 amount: 1000,
                 cc: '4444111144441111',
                 date: 'today'
-            }).catch(function(error) {
+            }).then(function() {
+                throw new Error('Expected rejection');
+            }, function(error) {
                 error.should.have.property('status').that.equals('baddata');
                 error.should.have.property('error').that.equals('extrafields');
                 error.should.have.property('offenders').that.has.members(['date']);
@@ -142,7 +152,9 @@ describe('The TCLink wrapper', function() {
 
                 stubbedClient.send('sale', {
                     amount: 1000
-                }).catch(function(error) {
+                }).then(function() {
+                    throw new Error('Expected rejection');
+                }, function(error) {
                     error.should.deep.equal({
                         err: new Error('Unable to make request'),
                         status: 500,
