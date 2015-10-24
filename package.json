@@ -1,6 +1,6 @@
 {
   "name": "node-trustcommerce",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TrustCommerce API Wrapper",
   "main": "src/tclink.js",
   "dependencies": {
