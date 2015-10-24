@@ -167,6 +167,19 @@ describe('The TCLink wrapper', function() {
                 process.env.TCLINK_DEMO = 1;
             });
         });
+
+        it('should resolve properly for a credit', function(done) {
+            this.timeout(5000);
+
+            return client.send('credit2', {
+                amount: 1000,
+                cc: '4111111111111111',
+                exp: '1017'
+            }).then(function(response) {
+                response.should.have.property('status').that.equals('accepted');
+                response.should.have.property('transid').and.match(/^\d{3}-\d{10}$/);
+            }).done(done);
+        });
     });
 
     it('should have the correct host set', function() {
