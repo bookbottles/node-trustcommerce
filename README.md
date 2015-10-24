@@ -1,6 +1,6 @@
 # node-trustcommerce
 
-[![NPM](https://nodei.co/npm/node-trustcommerce.png)](https://nodei.co/npm/node-trustcommerce/)
+[![npm version](https://badge.fury.io/js/node-trustcommerce.svg)](https://badge.fury.io/js/node-trustcommerce)
 [![Build](https://travis-ci.org/bookbottles/node-trustcommerce.svg)](https://travis-ci.org/bookbottles/node-trustcommerce)
 [![codecov.io](http://codecov.io/github/bookbottles/node-trustcommerce/coverage.svg?branch=master)](http://codecov.io/github/bookbottles/node-trustcommerce?branch=master)
 
