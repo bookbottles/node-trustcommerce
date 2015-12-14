@@ -158,6 +158,40 @@ describe('The TCLink wrapper', function() {
                     error.should.deep.equal({
                         err: new Error('Unable to make request'),
                         status: 500,
+                        body: null
+                    });
+                }).done(done);
+            });
+
+            after(function() {
+                process.env.TCLINK_DEMO = 1;
+            });
+        });
+
+        describe('if request returns with undefined arguments', function() {
+            var StubbedTC;
+
+            before(function() {
+                StubbedTC = proxyquire('../src/tclink', {
+                    request: {
+                        post: sinon.stub().yields()
+                    }
+                });
+
+                delete process.env.TCLINK_DEMO;
+            });
+
+            it('should return gracefully', function(done) {
+                var stubbedClient = new StubbedTC(process.env.TCLINK_USER, process.env.TCLINK_PASS);
+
+                stubbedClient.send('sale', {
+                    amount: 1000
+                }).then(function() {
+                    throw new Error('Expected rejection');
+                }, function(error) {
+                    error.should.deep.equal({
+                        err: undefined,
+                        status: 500,
                         body: undefined
                     });
                 }).done(done);
