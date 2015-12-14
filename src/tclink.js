@@ -54,7 +54,7 @@ TCLink.prototype._makeRequest = function(action, params) {
         }, function(err, httpResponse, body) {
             var responseData;
 
-            if (!err && httpResponse.statusCode === 200) {
+            if (!err && httpResponse && httpResponse.statusCode === 200) {
                 responseData = _.reduce(body.split('\n'), function(response, entry) {
                     var data = entry.split('=');
 
@@ -77,8 +77,8 @@ TCLink.prototype._makeRequest = function(action, params) {
             } else {
                 reject({
                     err: err,
-                    status: httpResponse.statusCode,
-                    body: httpResponse.body
+                    status: httpResponse ? httpResponse.statusCode : 500,
+                    body: body
                 });
             }
         });
