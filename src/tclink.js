@@ -78,7 +78,7 @@ TCLink.prototype._makeRequest = function(action, params) {
                 reject({
                     err: err,
                     status: httpResponse ? httpResponse.statusCode : 500,
-                    body: httpResponse ? httpResponse.body : null
+                    body: body
                 });
             }
         });
